@@ -1,0 +1,33 @@
+﻿<Window x:Class="BlackjackApplicatie.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackjackApplicatie"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="600">
+    <Grid Background="LightSteelBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Content="Speler" FontSize="25"/>
+        <Label Grid.Column="2" Content="Bank" FontSize="25" />
+        <Label x:Name="LblscoreSpeler" Grid.Column="0" Grid.Row="4" Content="0" FontSize="25" />
+        <Label x:Name="LblscoreBank" Grid.Column="2" Grid.Row="4" Content="0" FontSize="25" />
+        <Button x:Name="BtnDeel" Grid.Column="1" Content="Deel" Width="150" Height="45" Click="BtnDeel_Click"/>
+        <Button x:Name="BtnHit" Grid.Column="1" Grid.Row="1" Content="Hit" Width="150" Height="45" IsEnabled="False" />
+        <Button x:Name="BtnStand" Grid.Column="1" Grid.Row="2" Content="Stand" Width="150" Height="45" IsEnabled="False" />
+        <TextBox x:Name="txtSpeler" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Text="" />
+        <TextBox x:Name="txtBank" TextWrapping="Wrap" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Text=""/>
+
+    </Grid>
+</Window>
