@@ -24,10 +24,29 @@ namespace BlackjackApplicatie
         {
             InitializeComponent();
         }
+       
 
         private void BtnDeel_Click(object sender, RoutedEventArgs e)
         {
+            // hier maak ik een array van de kaarten + de kaartvalues
+            string[] kaarten = { "Klaver", "Schoppen", "Ruiten", "Harten", "Klaveren koning", "Klaveren vrouw",
+            "Klaveren boer", "Schoppen koning", "Schoppen vrouw", "Schoppen boer", "Ruiten koning",
+            "Ruiten vrouw", "Ruiten boer", "Harten koning", "Harten vrouw", "Harten boer" };
+            int[] kaartvalues = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            // hier generate ik een random voor de kaart, en de kaartvalue
+            Random rndkaart = new Random();
+            Random rndvalue = new Random();
+            string kaart = kaarten[rndkaart.Next(kaarten.Length)];
+            int kaartvalue = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+            // kaart toevoegen aan de textbox
+            StringBuilder kaartspeler = new StringBuilder();
+            kaartspeler.AppendLine($"{kaart} {kaartvalue}");
+            txtSpeler.Text = kaartspeler.ToString();
            
         }
+
+
+
+
     }
 }
