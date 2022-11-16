@@ -24,7 +24,7 @@
         <Label x:Name="LblscoreSpeler" Grid.Column="0" Grid.Row="4" Content="0" FontSize="25" />
         <Label x:Name="LblscoreBank" Grid.Column="2" Grid.Row="4" Content="0" FontSize="25" />
         <Button x:Name="BtnDeel" Grid.Column="1" Content="Deel" Width="150" Height="45" Click="BtnDeel_Click"/>
-        <Button x:Name="BtnHit" Grid.Column="1" Grid.Row="1" Content="Hit" Width="150" Height="45" IsEnabled="False" />
+        <Button x:Name="BtnHit" Grid.Column="1" Grid.Row="1" Content="Hit" Width="150" Height="45" IsEnabled="False" Click="BtnHit_Click" />
         <Button x:Name="BtnStand" Grid.Column="1" Grid.Row="2" Content="Stand" Width="150" Height="45" IsEnabled="False" />
         <TextBox x:Name="txtSpeler" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Text="" />
         <TextBox x:Name="txtBank" TextWrapping="Wrap" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Text=""/>
