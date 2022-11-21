@@ -45,6 +45,8 @@ namespace BlackjackApplicatie
         int kaartvalue2Bank;
         string kaartSpelerHit;
         int kaartvalueSpelerHit;
+        string kaartBankStand;
+        int kaartvalueBankStand;
         int somSpeler;
         int somBank;
         
@@ -57,6 +59,10 @@ namespace BlackjackApplicatie
             kaartenSpeler.Clear();
             kaartenBank.Clear();
         }
+        private void MaakResultLeeg() // zorgt ervoor dat het resultaat gecleared wordt wanneer er een nieuwe game wordt gestart
+        {
+            LblResultaat.Content = "";
+        }
         private void KiesKaartenSpeler()
         {
              // de 2 kaarten worden toegewezen aan de speler
@@ -66,6 +72,7 @@ namespace BlackjackApplicatie
             kaartvalue2Speler = kaartvalues[rndvalue.Next(kaartvalues.Length)];
             kaartSpelerHit = kaarten[rndkaart.Next(kaarten.Length)];
             kaartvalueSpelerHit = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+
             // zorgt ervoor dat de kaarten niet hetzelfde kunnen zijn
             while (kaartvalue1Speler == kaartvalue2Speler || kaartvalue1Speler == kaartvalueSpelerHit || kaartvalue2Speler == kaartvalueSpelerHit)
                 kaartvalue2Speler = kaartvalues[rndvalue.Next(kaartvalues.Length)];
@@ -77,17 +84,23 @@ namespace BlackjackApplicatie
             kaartvalue1Bank = kaartvalues[rndvalue.Next(kaartvalues.Length)];
             kaart2Bank = kaarten[rndkaart.Next(kaarten.Length)];
             kaartvalue2Bank = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+            kaartBankStand = kaarten[rndkaart.Next(kaarten.Length)];
+            kaartvalueBankStand = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+            //  kaartBankStand = kaarten[rndkaart.Next(kaarten.Length)];
+            //   kaartvalueBankStand = kaartvalues[rndvalue.Next(kaartvalues.Length)];
             // zorgt ervoor dat 2 kaarten nooit hetzelfde kunnen zijn
-            while (kaartvalue1Bank == kaartvalue2Bank)
+            while (kaartvalue1Bank == kaartvalue2Bank || kaartvalue1Bank == kaartvalueBankStand || kaartvalue2Bank == kaartvalueBankStand)
                 kaartvalue2Bank = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+                kaartvalueBankStand = kaartvalues[rndvalue.Next(kaartvalues.Length)];
         }
         private void BtnDeel_Click(object sender, RoutedEventArgs e)
         {
+            MaakResultLeeg();
             // de 2 methods kieskaarten worden opgeroepen
             KiesKaartenSpeler();
             KiesKaartenBank();
           
-            //grote if bool voor speler --> als kaart koning, boer, of vrouw is (value 10, anders normal value), als aas = 1
+            //grote if bool voor speler --> als kaart koning, boer, of vrouw is (value 10, anders normal value), als aas = 1 of 11 (depending on score)
             if (kaart1Speler.Contains("Koning") == true || kaart1Speler.Contains("Vrouw") == true || kaart1Speler.Contains("Boer") == true)
             {
                 kaartvalue1Speler = 10;
@@ -190,10 +203,89 @@ namespace BlackjackApplicatie
             {
                 kaartenSpeler.AppendLine($"{kaartSpelerHit} {kaartvalueSpelerHit}");
             }
+
             txtSpeler.Text = kaartenSpeler.ToString();
             somSpeler += kaartvalueSpelerHit;
             // komt een if bool
             LblscoreSpeler.Content = somSpeler.ToString();
+            if (somSpeler > 21) 
+            {
+                LblResultaat.Foreground = Brushes.Red;
+                LblResultaat.Content = "Verloren";
+                BtnDeel.IsEnabled = true;
+                BtnHit.IsEnabled = false;
+                BtnStand.IsEnabled = false;
+                MaakKaartenLeeg();
+               
+            }
+          
+        }
+
+        private void BtnStand_Click(object sender, RoutedEventArgs e)
+        {
+            KiesKaartenBank();
+            // dit zorgt ervoor dat de 2de hidden card van de bank correct getoond wordt
+            if (kaart2Bank.Contains("Koning") == true || kaart2Bank.Contains("Vrouw") == true || kaart2Bank.Contains("Boer") == true || kaart2Bank.Contains("Aas") == true)
+            {
+                kaartenBank.AppendLine($"{kaart2Bank}");
+                txtBank.Text = kaartenBank.ToString();
+            }
+            else
+            {
+                kaartenBank.AppendLine($"{kaart2Bank} {kaartvalue2Bank}");
+                txtBank.Text = kaartenBank.ToString();
+            }
+           // txtBank.Text = kaartenBank.ToString();
+            somBank += kaartvalue2Bank;
+
+            if (somBank < 16 || kaartBankStand.Contains("Koning") == true || kaartBankStand.Contains("Vrouw") == true || kaartBankStand.Contains("Boer") == true)
+            {
+                kaartvalueBankStand = 10;
+                kaartenBank.AppendLine($"{kaartBankStand}");
+            }   
+            else if (somBank < 16 || kaartBankStand.Contains("Aas") == true)
+            {
+                kaartvalueBankStand = 1;
+                kaartenBank.AppendLine($"{kaartBankStand}");
+            }
+            else if (somBank < 16)
+            {
+                kaartenBank.AppendLine($"{kaartBankStand} {kaartvalueBankStand}");
+            }
+            else
+            {
+
+            }
+            somBank += kaartvalueBankStand;
+            txtBank.Text = kaartenBank.ToString();
+
+            LblscoreBank.Content = somBank.ToString();
+
+            if(somBank == somSpeler)
+            {
+                LblResultaat.Foreground = Brushes.Black;
+                LblResultaat.Content = "Stand";
+            }
+            else if (somBank >= 22)
+            {
+                LblResultaat.Foreground = Brushes.Green;
+                LblResultaat.Content = "Gewonnen";
+            }
+            else if (somSpeler > somBank)
+            {
+                LblResultaat.Foreground = Brushes.Green;
+                LblResultaat.Content = "Gewonnen";
+            }
+            else
+            {
+                LblResultaat.Foreground = Brushes.Red;
+                LblResultaat.Content = "Verloren";
+            }
+            BtnDeel.IsEnabled = true;
+            BtnHit.IsEnabled = false;
+            BtnStand.IsEnabled = false;
+            MaakKaartenLeeg();
+
         }
     }
 }
