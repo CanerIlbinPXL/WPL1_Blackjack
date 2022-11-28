@@ -26,8 +26,8 @@ namespace BlackjackApplicatie
         string[] kaarten = { "Klaveren", "Klaveren Koning", "Klaveren Vrouw", "Klaveren Boer",
                 "Schoppen", "Schoppen Koning", "Schoppen Vrouw", "Schoppen Boer", "Ruiten", "Ruiten Koning",
                 "Ruiten Boer", "Ruiten Vrouw", "Harten", "Harten Koning", "Harten Vrouw", "Harten Boer",
-                "Klaveren Aas", "Schoppen Aas", "Ruiten Aas", "Harten Aas"};
-        int[] kaartvalues = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+                "Klaveren Aas", "Schoppen Aas", "Ruiten Aas", "Harten Aas", "Diamanten", "Diamanten Koning", "Diamanten Vrouw", "Diamanten Boer", "Diamanten Aas"};
+        int[] kaartvalues = { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         // stringbuilder om later de kaarten van speler en bank in te voegen in de textboxes
         StringBuilder kaartenSpeler = new StringBuilder();
         StringBuilder kaartenBank = new StringBuilder();
@@ -49,10 +49,53 @@ namespace BlackjackApplicatie
         int kaartvalueBankStand;
         int somSpeler;
         int somBank;
+        int Kapitaal;
+        int inzet;
+        string resultaat;
+        
         
         public MainWindow()
         {
             InitializeComponent();
+        }
+        //private void StartKapitaal()
+        //{
+        //    kapitaal = 100;
+        //    kapitaalSpeler = kapitaal.ToString();
+        //    txtKapitaal.Text = kapitaalSpeler;
+        //}
+        private void InzetSpeler()
+        {
+            Kapitaal = int.Parse(txtKapitaal.Text);
+            inzet = int.Parse(txtInzet.Text);
+            // als de speler wint dan word zijn kapitaal verhoogd met wat hij ingezet heeft
+            //if (Kapitaal > 0 && resultaat.Contains("Gewonnen") == true)
+            //{
+
+            //    Kapitaal += inzet;
+            //    txtKapitaal.Text = Kapitaal.ToString();
+            //}
+            //else if (Kapitaal > 0 && resultaat.Contains("Stand") == true)
+            //{
+            //    txtKapitaal.Text = Kapitaal.ToString();
+
+            //}
+            //else if (Kapitaal > 0 && resultaat.Contains("Verloren") == true)
+            //{
+            //    Kapitaal -= inzet;
+            //    txtKapitaal.Text = Kapitaal.ToString();
+            //}
+
+            //else
+            //{
+            //    MessageBox.Show("Je hebt geen kapitaal meer, start een nieuwe game!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    BtnNieuw.IsEnabled = true;
+            //    BtnDeel.IsEnabled = false;
+            //    BtnHit.IsEnabled = false;
+            //    BtnStand.IsEnabled = false;
+
+            //}
+
         }
         private void MaakKaartenLeeg() // deze zorgt ervoor dat wanneer er opnieuw op deel word geklikt, de vorige kaarten gewist worden. Made for codetesting
         {
@@ -74,9 +117,9 @@ namespace BlackjackApplicatie
             kaartvalueSpelerHit = kaartvalues[rndvalue.Next(kaartvalues.Length)];
 
             // zorgt ervoor dat de kaarten niet hetzelfde kunnen zijn
-            while (kaartvalue1Speler == kaartvalue2Speler || kaartvalue1Speler == kaartvalueSpelerHit || kaartvalue2Speler == kaartvalueSpelerHit)
-                kaartvalue2Speler = kaartvalues[rndvalue.Next(kaartvalues.Length)];
-                kaartvalueSpelerHit = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+            //while (kaartvalue1Speler == kaartvalue2Speler || kaartvalue1Speler == kaartvalueSpelerHit || kaartvalue2Speler == kaartvalueSpelerHit)
+            //    kaartvalue2Speler = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+            //    kaartvalueSpelerHit = kaartvalues[rndvalue.Next(kaartvalues.Length)];
         }
         private void KiesKaartenBank()
         {
@@ -89,28 +132,31 @@ namespace BlackjackApplicatie
             //  kaartBankStand = kaarten[rndkaart.Next(kaarten.Length)];
             //   kaartvalueBankStand = kaartvalues[rndvalue.Next(kaartvalues.Length)];
             // zorgt ervoor dat 2 kaarten nooit hetzelfde kunnen zijn
-            while (kaartvalue1Bank == kaartvalue2Bank || kaartvalue1Bank == kaartvalueBankStand || kaartvalue2Bank == kaartvalueBankStand)
-                kaartvalue2Bank = kaartvalues[rndvalue.Next(kaartvalues.Length)];
-                kaartvalueBankStand = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+            //while (kaartvalue1Bank == kaartvalue2Bank || kaartvalue1Bank == kaartvalueBankStand || kaartvalue2Bank == kaartvalueBankStand)
+            //    kaartvalue2Bank = kaartvalues[rndvalue.Next(kaartvalues.Length)];
+            //    kaartvalueBankStand = kaartvalues[rndvalue.Next(kaartvalues.Length)];
         }
         private void BtnDeel_Click(object sender, RoutedEventArgs e)
         {
+            InzetSpeler();
             MaakResultLeeg();
             // de 2 methods kieskaarten worden opgeroepen
             KiesKaartenSpeler();
-            KiesKaartenBank();
-          
+            KiesKaartenBank();           
+            
             //grote if bool voor speler --> als kaart koning, boer, of vrouw is (value 10, anders normal value), als aas = 1 of 11 (depending on score)
             if (kaart1Speler.Contains("Koning") == true || kaart1Speler.Contains("Vrouw") == true || kaart1Speler.Contains("Boer") == true)
             {
                 kaartvalue1Speler = 10;
                 kaartenSpeler.AppendLine($"{kaart1Speler}");
-                
+
             }
+            // de aasvalue 11 wordt enkel toegewezen wanneer de speler een score heeft kleiner of gelijk aan 10 zodat deze in het voordeel van de speler is en en niet bust
             else if (kaart1Speler.Contains("Aas") == true)
             {
-                kaartvalue1Speler = 1;
-                kaartenSpeler.AppendLine($"{kaart1Speler}");
+             kaartvalue1Speler = 11;
+             kaartenSpeler.AppendLine($"{kaart1Speler}");
+                
             }
             else
             {
@@ -119,8 +165,9 @@ namespace BlackjackApplicatie
             if (kaart2Speler.Contains("Koning") == true || kaart2Speler.Contains("Vrouw") == true || kaart2Speler.Contains("Boer") == true)
             {
                 kaartvalue2Speler = 10;
-                kaartenSpeler.AppendLine($"{kaart2Speler}");  
+                kaartenSpeler.AppendLine($"{kaart2Speler}");
             }
+            // de aasvalue is 1 wanneer de totale score van de speler groter is dan 10, anders zou de speler al busten
             else if (kaart2Speler.Contains("Aas") == true)
             {
                 kaartvalue2Speler = 1;
@@ -143,7 +190,7 @@ namespace BlackjackApplicatie
             }
             else if (kaart1Bank.Contains("Aas") == true)
             {
-                kaartvalue1Bank = 1;
+                kaartvalue1Bank = 11;
                 kaartenBank.AppendLine($"{kaart1Bank}");
             }
             else
@@ -154,11 +201,6 @@ namespace BlackjackApplicatie
             {
                 kaartvalue2Bank = 10;
                 // kaartenBank.AppendLine($"{kaart2Bank}");
-                if (kaart2Bank.Contains("Aas") == true)
-                {
-                    kaartvalue2Bank = 1;
-                    // kaartenBank.AppendLine($"{kaart2Bank}");
-                }
             }
             else if (kaart2Bank.Contains("Aas") == true)
             {
@@ -168,11 +210,11 @@ namespace BlackjackApplicatie
             // 2de kaart van de bank moet verborgen worden en niet in de som meegerekend worden
             else
             {
-               // kaartenBank.AppendLine($"{kaart2Bank} {kaartvalue2Bank}");
+                // kaartenBank.AppendLine($"{kaart2Bank} {kaartvalue2Bank}");
             }
             txtBank.Text = kaartenBank.ToString();
             somSpeler = kaartvalue1Speler + kaartvalue2Speler;
-            somBank = kaartvalue1Bank;
+            somBank = kaartvalue1Bank; //de 2de kaart is hidden dus die tellen we er voorlopig niet bij, deze word met de button stand meegegeven
             LblscoreSpeler.Content = somSpeler.ToString();
             LblscoreBank.Content = somBank.ToString();
             BtnStand.IsEnabled = true;
@@ -208,19 +250,50 @@ namespace BlackjackApplicatie
             somSpeler += kaartvalueSpelerHit;
             // komt een if bool
             LblscoreSpeler.Content = somSpeler.ToString();
+            InzetSpeler();
             if (somSpeler > 21) 
             {
+                resultaat = "Verloren";
+                if (resultaat.Contains("Verloren") == true)
+                      {
+                        Kapitaal -= inzet;
+                        txtKapitaal.Text = Kapitaal.ToString();
+                      }
+                if (Kapitaal == 0)
+                {
+                    MessageBox.Show("Je hebt geen kapitaal meer, start een nieuwe game!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                    BtnNieuw.IsEnabled = true;
+                    BtnDeel.IsEnabled = false;
+                    BtnHit.IsEnabled = false;
+                    BtnStand.IsEnabled = false;
+                }
                 LblResultaat.Foreground = Brushes.Red;
                 LblResultaat.Content = "Verloren";
-                BtnDeel.IsEnabled = true;
+                
                 BtnHit.IsEnabled = false;
                 BtnStand.IsEnabled = false;
                 MaakKaartenLeeg();
                
             }
-          
-        }
 
+            
+            //if (resultaat.Contains("Verloren") == true)
+            //     {
+            //        Kapitaal -= inzet;
+            //        txtKapitaal.Text = Kapitaal.ToString();
+            //     }
+            //else
+            //{
+            //    MessageBox.Show("Je hebt geen kapitaal meer, start een nieuwe game!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    BtnNieuw.IsEnabled = true;
+            //    BtnDeel.IsEnabled = false;
+            //    BtnHit.IsEnabled = false;
+            //    BtnStand.IsEnabled = false;
+
+            //}
+
+
+        }
         private void BtnStand_Click(object sender, RoutedEventArgs e)
         {
             KiesKaartenBank();
@@ -238,12 +311,12 @@ namespace BlackjackApplicatie
            // txtBank.Text = kaartenBank.ToString();
             somBank += kaartvalue2Bank;
 
-            if (somBank < 16 || kaartBankStand.Contains("Koning") == true || kaartBankStand.Contains("Vrouw") == true || kaartBankStand.Contains("Boer") == true)
+            if (somBank < 16 && kaartBankStand.Contains("Koning") == true || kaartBankStand.Contains("Vrouw") == true || kaartBankStand.Contains("Boer") == true)
             {
                 kaartvalueBankStand = 10;
                 kaartenBank.AppendLine($"{kaartBankStand}");
             }   
-            else if (somBank < 16 || kaartBankStand.Contains("Aas") == true)
+            else if (somBank < 16 && kaartBankStand.Contains("Aas") == true)
             {
                 kaartvalueBankStand = 1;
                 kaartenBank.AppendLine($"{kaartBankStand}");
@@ -263,29 +336,73 @@ namespace BlackjackApplicatie
 
             if(somBank == somSpeler)
             {
+                resultaat = "Stand";
                 LblResultaat.Foreground = Brushes.Black;
                 LblResultaat.Content = "Stand";
             }
             else if (somBank >= 22)
             {
+                resultaat = "Gewonnen";
                 LblResultaat.Foreground = Brushes.Green;
                 LblResultaat.Content = "Gewonnen";
             }
             else if (somSpeler > somBank)
             {
+                resultaat = "Gewonnen";
                 LblResultaat.Foreground = Brushes.Green;
                 LblResultaat.Content = "Gewonnen";
             }
             else
             {
+                resultaat = "Verloren";
                 LblResultaat.Foreground = Brushes.Red;
                 LblResultaat.Content = "Verloren";
             }
+            InzetSpeler();
+                 // als de speler wint dan word zijn kapitaal verhoogd met wat hij ingezet heeft
+                  if (Kapitaal > 0 && resultaat.Contains("Gewonnen") == true)
+                   { 
+
+                   Kapitaal += inzet;
+                   txtKapitaal.Text = Kapitaal.ToString();
+                     }
+                   else if (Kapitaal > 0 && resultaat.Contains("Stand") == true)
+                   {
+                       txtKapitaal.Text = Kapitaal.ToString();
+
+                   }
+                   else if (Kapitaal > 0 && resultaat.Contains("Verloren") == true)
+                  {
+                      Kapitaal -= inzet;
+                       txtKapitaal.Text = Kapitaal.ToString();
+                  }
+
+                  else
+                   {
+                      MessageBox.Show("Je hebt geen kapitaal meer, start een nieuwe game!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                      BtnNieuw.IsEnabled = true;
+                      BtnDeel.IsEnabled = false;
+                      BtnHit.IsEnabled = false;
+                      BtnStand.IsEnabled = false;
+
+                  }
+
             BtnDeel.IsEnabled = true;
             BtnHit.IsEnabled = false;
             BtnStand.IsEnabled = false;
             MaakKaartenLeeg();
 
+        }
+
+        private void BtnNieuw_Click(object sender, RoutedEventArgs e)
+        {
+            InzetSpeler();
+            kaartenSpeler.Clear();
+            kaartenBank.Clear();
+            Kapitaal = 100;
+            txtKapitaal.Text = Kapitaal.ToString();
+            BtnDeel.IsEnabled = true;
+            BtnNieuw.IsEnabled = false;
         }
     }
 }
