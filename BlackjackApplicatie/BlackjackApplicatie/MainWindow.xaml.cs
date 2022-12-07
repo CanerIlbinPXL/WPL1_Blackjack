@@ -26,7 +26,7 @@ namespace BlackjackApplicatie
         string[] kaarten = { "Klaveren", "Klaveren Koning", "Klaveren Vrouw", "Klaveren Boer",
                 "Schoppen", "Schoppen Koning", "Schoppen Vrouw", "Schoppen Boer", "Ruiten", "Ruiten Koning",
                 "Ruiten Boer", "Ruiten Vrouw", "Harten", "Harten Koning", "Harten Vrouw", "Harten Boer",
-                "Klaveren Aas", "Schoppen Aas", "Ruiten Aas", "Harten Aas", "Diamanten", "Diamanten Koning", "Diamanten Vrouw", "Diamanten Boer", "Diamanten Aas"};
+                "Klaveren Aas", "Schoppen Aas", "Ruiten Aas", "Harten Aas"};
         int[] kaartvalues = { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         // stringbuilder om later de kaarten van speler en bank in te voegen in de textboxes
         StringBuilder kaartenSpeler = new StringBuilder();
@@ -52,8 +52,9 @@ namespace BlackjackApplicatie
         int Kapitaal;
         int inzet;
         string resultaat;
-        
-        
+        Image laatstekaartSpeler = new Image();
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -97,6 +98,18 @@ namespace BlackjackApplicatie
             //}
 
         }
+       
+        //private void ButtonImage()
+        //{
+        //    //ImageBrush ib = new ImageBrush();
+        //    //ib.ImageSource = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_clubs.png", UriKind.Relative));
+        //    //BtnLaatstekaartSpeler.Content = ib;
+           
+        //    laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_clubs.png"));
+        //    BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+
+
+        //}
         private void MaakKaartenLeeg() // deze zorgt ervoor dat wanneer er opnieuw op deel word geklikt, de vorige kaarten gewist worden. Made for codetesting
         {
             kaartenSpeler.Clear();
@@ -213,6 +226,7 @@ namespace BlackjackApplicatie
             //{
             //    // kaartenBank.AppendLine($"{kaart2Bank} {kaartvalue2Bank}");
             //}
+           
             txtBank.Text = kaartenBank.ToString();
             somSpeler = kaartvalue1Speler + kaartvalue2Speler;
             somBank = kaartvalue1Bank; //de 2de kaart is hidden dus die tellen we er voorlopig niet bij, deze word met de button stand meegegeven
@@ -222,8 +236,249 @@ namespace BlackjackApplicatie
             BtnHit.IsEnabled = true;
             BtnDeel.IsEnabled = false;
 
+            // hier komt een grote bool om ervoor te zorgen dat de foto van de laatst gelezen kaart van zowel spelers als bank correct getoond wordt
+            if(kaart2Speler.Contains("Klaveren") && kaartvalue2Speler == 2)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler; 
+            }
+            else if (kaart2Speler.Contains("Klaveren") && kaartvalue2Speler == 3)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\3_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren") && kaartvalue2Speler == 4)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\4_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren") && kaartvalue2Speler == 5)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\5_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren") && kaartvalue2Speler == 6)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\6_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren") && kaartvalue2Speler == 7)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\7_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren") && kaartvalue2Speler == 8)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\8_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren") && kaartvalue2Speler == 9)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\9_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen") && kaartvalue2Speler == 2)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen") && kaartvalue2Speler == 3)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\3_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen") && kaartvalue2Speler == 4)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\4_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen") && kaartvalue2Speler == 5)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\5_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen") && kaartvalue2Speler == 6)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\6_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen") && kaartvalue2Speler == 7)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\7_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen") && kaartvalue2Speler == 8)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\8_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen") && kaartvalue2Speler == 9)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\9_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten") && kaartvalue2Speler == 2)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten") && kaartvalue2Speler == 3)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\3_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten") && kaartvalue2Speler == 4)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\4_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten") && kaartvalue2Speler == 5)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\5_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten") && kaartvalue2Speler == 6)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\6_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten") && kaartvalue2Speler == 7)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\7_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten") && kaartvalue2Speler == 8)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\8_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten") && kaartvalue2Speler == 9)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\9_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten") && kaartvalue2Speler == 2)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten") && kaartvalue2Speler == 3)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\3_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten") && kaartvalue2Speler == 4)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\4_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten") && kaartvalue2Speler == 5)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\5_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten") && kaartvalue2Speler == 6)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\6_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten") && kaartvalue2Speler == 7)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\7_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten") && kaartvalue2Speler == 8)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\8_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten") && kaartvalue2Speler == 9)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\9_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren Aas"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\ace_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten Aas"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\ace_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen Aas"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\ace_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten Aas"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\ace_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren Koning"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\King_of_clubs2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren Boer"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\jack_of_clubs2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Klaveren Vrouw"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\queen_of_clubs2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten Koning"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\King_of_diamonds2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten Boer"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\jack_of_diamonds2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Ruiten Vrouw"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\queen_of_diamonds2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten Koning"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\King_of_hearts2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten Boer"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\jack_of_hearts2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Harten Vrouw"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\queen_of_hearts2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen Koning"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\King_of_spades2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen Boer"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\jack_of_spades2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaart2Speler.Contains("Schoppen Vrouw"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\queen_of_spades2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
             // zorgt ervoor dat moest er opnieuw op deel geklikt worden dat er nieuwe kaarten generate worden
-          //  MaakKaartenLeeg();
+            //  MaakKaartenLeeg();
 
         }
 
@@ -253,8 +508,7 @@ namespace BlackjackApplicatie
             LblscoreSpeler.Content = somSpeler.ToString();
             InzetSpeler();
             if (somSpeler > 21) 
-            {
-                
+            { 
                 resultaat = "Verloren";
                 LblResultaat.Foreground = Brushes.Red;
                 LblResultaat.Content = "Verloren";
@@ -277,6 +531,247 @@ namespace BlackjackApplicatie
                 BtnHit.IsEnabled = false;
                 BtnStand.IsEnabled = false;
                 MaakKaartenLeeg();
+            }
+
+            if (kaartSpelerHit.Contains("Klaveren") && kaartvalueSpelerHit == 2)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren") && kaartvalueSpelerHit == 3)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\3_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren") && kaartvalueSpelerHit == 4)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\4_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren") && kaartvalueSpelerHit == 5)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\5_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren") && kaartvalueSpelerHit == 6)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\6_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren") && kaartvalueSpelerHit == 7)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\7_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren") && kaartvalueSpelerHit == 8)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\8_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren") && kaartvalueSpelerHit == 9)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\9_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen") && kaartvalueSpelerHit == 2)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen") && kaartvalueSpelerHit == 3)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\3_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen") && kaartvalueSpelerHit == 4)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\4_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen") && kaartvalueSpelerHit == 5)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\5_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen") && kaartvalueSpelerHit == 6)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\6_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen") && kaartvalueSpelerHit == 7)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\7_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen") && kaartvalueSpelerHit == 8)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\8_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen") && kaartvalueSpelerHit == 9)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\9_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten") && kaartvalueSpelerHit == 2)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten") && kaartvalueSpelerHit == 3)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\3_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten") && kaartvalueSpelerHit == 4)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\4_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten") && kaartvalueSpelerHit == 5)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\5_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten") && kaartvalueSpelerHit == 6)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\6_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten") && kaartvalueSpelerHit == 7)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\7_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten") && kaartvalueSpelerHit == 8)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\8_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten") && kaartvalueSpelerHit == 9)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\9_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten") && kaartvalueSpelerHit == 2)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\2_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten") && kaartvalueSpelerHit == 3)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\3_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten") && kaartvalueSpelerHit == 4)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\4_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten") && kaartvalueSpelerHit == 5)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\5_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten") && kaartvalueSpelerHit == 6)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\6_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten") && kaartvalueSpelerHit == 7)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\7_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten") && kaartvalueSpelerHit == 8)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\8_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten") && kaartvalueSpelerHit == 9)
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\9_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren Aas"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\ace_of_clubs.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten Aas"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\ace_of_diamonds.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen Aas"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\ace_of_spades.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten Aas"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\ace_of_hearts.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren Koning"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\King_of_clubs2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren Boer"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\jack_of_clubs2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Klaveren Vrouw"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\queen_of_clubs2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten Koning"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\King_of_diamonds2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten Boer"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\jack_of_diamonds2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Ruiten Vrouw"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\queen_of_diamonds2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten Koning"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\King_of_hearts2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten Boer"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\jack_of_hearts2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Harten Vrouw"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\queen_of_hearts2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen Koning"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\King_of_spades2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen Boer"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\jack_of_spades2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
+            }
+            else if (kaartSpelerHit.Contains("Schoppen Vrouw"))
+            {
+                laatstekaartSpeler.Source = new BitmapImage(new Uri(@"C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\queen_of_spades2.png"));
+                BtnLaatstekaartSpeler.Content = laatstekaartSpeler;
             }
 
 
@@ -397,7 +892,6 @@ namespace BlackjackApplicatie
             MaakKaartenLeeg();
 
         }
-
         private void BtnNieuw_Click(object sender, RoutedEventArgs e)
         {
             InzetSpeler();
@@ -408,5 +902,7 @@ namespace BlackjackApplicatie
             BtnDeel.IsEnabled = true;
             BtnNieuw.IsEnabled = false;
         }
+
+       
     }
 }
