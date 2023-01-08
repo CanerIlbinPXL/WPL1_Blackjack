@@ -24,7 +24,8 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Foreground="White" Content="Speler" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Grid.Column="2" Content="Bank" FontSize="17"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -33,28 +34,33 @@
         <Button x:Name="BtnDeel" Grid.Column="1" Content="Deel" Width="135" IsEnabled="False" Height="30" Click="BtnDeel_Click"/>
         <Button x:Name="BtnHit" Grid.Column="1" Grid.Row="1" Content="Hit" Width="135" Height="30" IsEnabled="False" Click="BtnHit_Click" />
         <Button x:Name="BtnStand" Grid.Column="1" Grid.Row="2" Content="Stand" Width="135" Height="30" IsEnabled="False" Click="BtnStand_Click" />
-        <TextBox x:Name="txtSpeler" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Text="" />
-        <TextBox x:Name="txtBank" TextWrapping="Wrap" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Text=""/>
+        <Button x:Name="BtnDoubleDown" Grid.Column="1" Grid.Row="3" Content="Double down" Width="135" Height="30" IsEnabled="False" Click="BtnDoubleDown_Click"/>
+        <TextBox x:Name="txtSpeler" TextWrapping="Wrap" Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Text="" />
+        <TextBox x:Name="txtBank" TextWrapping="Wrap" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" Text=""/>
         <Label x:Name="LblResultaat" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="7" Content="" FontSize="17" />
-        <Label Content="Inzet:"  Foreground="White" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center"/>
-        <TextBox x:Name="txtInzet" IsEnabled="False" HorizontalAlignment="Right"  Grid.Row="3" TextWrapping="Wrap" Text="{Binding ElementName=InzetSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="45"/>
-        <Slider x:Name="InzetSlider" IsEnabled="False"  IsSnapToTickEnabled="True" TickFrequency="1"  Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="120"/>
-        <Label Content="Kapitaal:"  Foreground="White" HorizontalAlignment="Center"   Grid.Row="4" VerticalAlignment="Center"/>
-        <TextBox x:Name="txtKapitaal" IsEnabled="False" HorizontalAlignment="Right"   Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="45"/>
-        <Button x:Name="BtnNieuw" Grid.Column="1" Width="135" Height="30" Content="Nieuw spel"   Grid.Row="4"  IsEnabled="True" Click="BtnNieuw_Click"/>
-        <Label Content="Laatste kaart"  Foreground="White" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Grid.RowSpan="2"/>
-        <Button x:Name="BtnLaatstekaartSpeler" Content=""  Grid.Row="5" Grid.RowSpan="2" Height="80" Width="55" VerticalAlignment="Center" HorizontalAlignment="Right">
+        <Label Content="Inzet:"  Foreground="White" HorizontalAlignment="Center"  Grid.Row="4" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtInzet" IsEnabled="False" HorizontalAlignment="Right"  Grid.Row="4" TextWrapping="Wrap" Text="{Binding ElementName=InzetSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="45"/>
+        <Slider x:Name="InzetSlider" IsEnabled="False"  IsSnapToTickEnabled="True" TickFrequency="1"  Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="120"/>
+        <Label Content="Kapitaal:"  Foreground="White" HorizontalAlignment="Center"   Grid.Row="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtKapitaal" IsEnabled="False" HorizontalAlignment="Right"   Grid.Row="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="45"/>
+        <Button x:Name="BtnNieuw" Grid.Column="1" Width="135" Height="30" Content="Nieuw spel"   Grid.Row="5"  IsEnabled="True" Click="BtnNieuw_Click"/>
+        <Label Content="Laatste kaart"  Foreground="White" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Grid.RowSpan="2"/>
+        <Button x:Name="BtnLaatstekaartSpeler" Content=""  Grid.Row="6" Grid.RowSpan="2" Height="80" Width="55" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button.Background>
                 <ImageBrush ImageSource =" C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\card back.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnLaatstekaartBank" Content=""  Grid.Row="5" Grid.Column="2" Grid.RowSpan="2" Height="80" Width="55" VerticalAlignment="Center" HorizontalAlignment="Left">
+        <Button x:Name="BtnLaatstekaartBank" Content=""  Grid.Row="6" Grid.Column="2" Grid.RowSpan="2" Height="80" Width="55" VerticalAlignment="Center" HorizontalAlignment="Left">
             <Button.Background>
                 <ImageBrush ImageSource =" C:\Users\Caner\source\repos\CanerIlbinPXL\WPL1_Blackjack\BlackjackApplicatie\BlackjackApplicatie\Assets\card back.png"/>
             </Button.Background>
         </Button>
-        <Label Grid.Column="2" Foreground="White" Content="Laatste kaart" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"/>
-        
+        <Label Grid.Column="2" Foreground="White" Content="Laatste kaart" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"/>
+        <StatusBar Background="PaleGreen" Grid.Row="9" Grid.ColumnSpan="3">
+            
+        </StatusBar>
+        <Label Grid.Row="9" Foreground="Black" Name="lblTijdstip" Content=""/>
+        <Button Name="btnHistoriek" Grid.Row="9" Grid.Column="1" Width="60" Height="25"  Content="Historiek" Click="BtnHistoriek_Click" />
 
 
     </Grid>
